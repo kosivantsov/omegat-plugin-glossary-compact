@@ -22,7 +22,7 @@
 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- **************************************************************************/
+**************************************************************************/
 
 package net.libretraduko.omegat;
 
@@ -46,6 +46,7 @@ import java.util.ResourceBundle;
  * Compact Glossary Layout
  * @author Kos Ivantsov (based on the plugin skeleton by Hiroshi Miura) 
  */
+
 public class CompactGlossaryLayout implements IGlossaryRenderer {
 
     //L10n resource
@@ -86,13 +87,13 @@ public class CompactGlossaryLayout implements IGlossaryRenderer {
                     StyleConstants.setBold(attrs, true);
                 }
                 attrs.addAttribute(TooltipAttribute.ATTRIBUTE_KEY, new TooltipAttribute(origins[i]));
-                trg.append(targets[i], attrs);
-                if (!comments[i].equals("")) {
-                    trg.append(" [" + comments[i] + "]", NOTES_ATTRIBUTES);
-                }
-                if (i < targets.length - 1) {
-                    trg.append(" | ", null);
-                }
+                trg.append(bracketEntry(targets[i]) + " ", attrs);
+            }
+            if (!comments[i].equals("")) {
+                trg.append("[" + comments[i] + "] ", NOTES_ATTRIBUTES);
+            }
+            if (i < targets.length - 1) {
+                trg.append("| ", null);
             }
         }
     }
@@ -124,6 +125,13 @@ public class CompactGlossaryLayout implements IGlossaryRenderer {
         public Void get() {
             return null;
         }
+    }
+
+    private String bracketEntry(String entry) {
+        if (entry.contains(",") && !(entry.contains(";") || entry.contains("\""))) {
+            entry = '"' + entry + '"';
+        }
+        return entry;
     }
 
     @Override
