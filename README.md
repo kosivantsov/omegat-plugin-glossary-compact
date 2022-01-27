@@ -17,7 +17,7 @@ This plugin uses OmegaT 5.7.0.
 
 ## Where is a built artifact?
 
-You can find distribution files you built in `build/distributions/install`.
+You can find distribution files you built in `build/distributions/install` of your local copy.
 
 You can also download binaries in [Releases](https://github.com/kosivantsov/omegat-plugin-glossay-compact/releases)
 
