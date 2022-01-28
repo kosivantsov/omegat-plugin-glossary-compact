@@ -31,3 +31,9 @@ OmegaT searches for plugins in that folder recursively, so if you have more than
 ## License
 
 This project is distributed under the GNU general public license version 3 or later.
+
+## Coffee
+
+If you want to say thank you
+
+<a href="https://www.buymeacoffee.com/verdakafo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-green.png" alt="Coffee would be great" height="41" width="196"></a>
