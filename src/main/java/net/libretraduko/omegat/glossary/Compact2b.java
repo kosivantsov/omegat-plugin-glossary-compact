@@ -24,7 +24,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **************************************************************************/
 
-package net.libretraduko.omegat;
+package net.libretraduko.omegat.glossary;
 
 import org.omegat.gui.glossary.DefaultGlossaryRenderer;
 import org.omegat.gui.glossary.GlossaryEntry;
@@ -47,22 +47,14 @@ import java.util.ResourceBundle;
  * @author Kos Ivantsov (based on the plugin skeleton by Hiroshi Miura) 
  */
 
-public class CompactGlossaryLayout implements IGlossaryRenderer {
+public class Compact2b implements IGlossaryRenderer {
 
     //L10n resource
     protected static final ResourceBundle res = ResourceBundle.getBundle("CompactGlossaryLayout", Locale.getDefault());
 
-    //loader
-    public static void loadPlugins() {
-        GlossaryRenderers.addGlossaryRenderer(new CompactGlossaryLayout());
-    }
-    //unloader
-    public static void unloadPlugins() {
-    }
-
     @Override
     public String getName() {
-        return res.getString("name");
+        return res.getString("name2b");
     }
 
     @Override
@@ -73,7 +65,7 @@ public class CompactGlossaryLayout implements IGlossaryRenderer {
     @Override
     public void render(final GlossaryEntry entry, final IRenderTarget<?> trg) {
         trg.append(entry.getSrcText(), SOURCE_ATTRIBUTES);
-        trg.append(": ");
+        trg.append(":");
 
         String[] targets = entry.getLocTerms(false);
         String[] comments = entry.getComments();
@@ -87,13 +79,13 @@ public class CompactGlossaryLayout implements IGlossaryRenderer {
                     StyleConstants.setBold(attrs, true);
                 }
                 attrs.addAttribute(TooltipAttribute.ATTRIBUTE_KEY, new TooltipAttribute(origins[i]));
-                trg.append(bracketEntry(targets[i]) + " ", attrs);
+                trg.append(" " + bracketEntry(targets[i]), attrs);
             }
             if (!comments[i].equals("")) {
-                trg.append("[" + comments[i] + "] ", NOTES_ATTRIBUTES);
+                trg.append(" (" + comments[i] + ")", NOTES_ATTRIBUTES);
             }
             if (i < targets.length - 1) {
-                trg.append("| ", null);
+                trg.append(",", TARGET_ATTRIBUTES);
             }
         }
     }
